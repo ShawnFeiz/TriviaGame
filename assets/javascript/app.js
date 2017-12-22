@@ -1,6 +1,8 @@
 $(document).ready(function() {
   
-    
+var questions = [{
+
+}];
 
 
 
@@ -22,6 +24,7 @@ $(document).ready(function() {
 
 
 
-    
+
+
 });
     
