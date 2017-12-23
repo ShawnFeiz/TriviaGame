@@ -29,7 +29,7 @@ var trivia = [
             a: "Mark Zuckerburg",
             b: "Elon Musk",
             c: "Winklevoss Twins",
-            d: "Jeff Bezon"
+            d: "Jeff Bezos"
         },
         key: `d`
     },
@@ -49,27 +49,28 @@ var trivia = [
 
 //set a timer to count down from 10
 function start() {
+    time = 10;
+    $(".timer").html(`Time: ${time}`);
     intID = setInterval(countDown, 1000);
 };
 
 function countDown(){
-    playGame();
     time--;
     $(".timer").html(`Time: ${time}`);
     if(time === 0){
         losses++;
         clearInterval(intID);
         nextQuestion();
-        console.log(losses);
+        console.log(`You have lost ${losses} many times`);
     } 
     // else {
-    //     playGame();
+    //     nextQuestion();
     // }
 };
 
 
 //choose a question and display it to the user
-function playGame(){
+function nextQuestion(){
     // time = 10;
     $(".question").html(trivia[i].question)
     $(".a").html(trivia[i].answer.a)
@@ -81,8 +82,9 @@ function playGame(){
 
 
 
-//if user picks the right answer inrease wins++, congrats them,
-//move onto next question
+// ==============================================================
+// ==============================================================
+
 
 //hide elements
 $(".panel-title").hide();
@@ -94,10 +96,28 @@ $(".startButton").on("click", function(){
     $(".triviaContent").show();
     $(".startButton").hide();
     start();
-    playGame();
+    nextQuestion();
 
 });
 
+$(".answer").on("click", function(){
+    if($(this) === trivia[i].key){
+        console.log('Correct!');
+        wins++;
+        clearInterval(intID);
+        i++;
+        start();
+        nextQuestion();
+        
+    } else {
+        console.log("Wrong!");
+        losses++;
+        clearInterval(intID);
+        i++;
+        start();
+        nextQuestion();
+    }
+});
 
 
 
