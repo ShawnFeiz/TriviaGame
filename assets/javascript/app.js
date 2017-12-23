@@ -41,6 +41,28 @@ var trivia = [
             d: "Sweatshirt"
         },
         key: `a`
+    },
+
+    q4 = {
+        question: `For two days, every two years, all employees do what? `,
+        answer: {
+            a: "Move Packages",
+            b: "Company Vacation in the Bahamas",
+            c: "Code!",
+            d: "At The Service Desk Handeling Calls"
+        },
+        key: `d`
+    },
+
+    q5 = {
+        question: `Which of the following is not owned by Amazon Inc.?`,
+        answer: {
+            a: "Oculus VR",
+            b: "IMDB.com",
+            c: "Twitch",
+            d: "Whole Foods"
+        },
+        key: `a`
     }
 ];
 
@@ -58,9 +80,12 @@ function countDown(){
         noGuess++;
         i++;
         clearInterval(intID);
-        start();
-        nextQuestion();
         console.log(`You have lost ${noGuess} many times`);
+        
+        setTimeout(function() {
+            start();
+            nextQuestion();
+          }, 3000);
     } 
 };
 
