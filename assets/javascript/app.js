@@ -2,12 +2,10 @@ $(document).ready(function() {
 
 //set initial variables
 var questionNum = 0;
-var correctGuess = 0;
-var wrongGuess = 0;
-var time = 10;
+var correctAnswer = 0;
+var wrongAnswer = 0;
 var noGuess = 0;
-var wins = 0;
-var losses = 0;
+var time = 5;
 var i = 0;
 
 //make an array of objects or objects within objects for Q/A  
@@ -49,7 +47,7 @@ var trivia = [
 
 //set a timer to count down from 10
 function start() {
-    time = 10;
+    time = 5;
     $(".timer").html(`Time: ${time}`);
     intID = setInterval(countDown, 1000);
 };
@@ -58,14 +56,13 @@ function countDown(){
     time--;
     $(".timer").html(`Time: ${time}`);
     if(time === 0){
-        losses++;
+        noGuess++;
+        i++;
         clearInterval(intID);
+        start();
         nextQuestion();
-        console.log(`You have lost ${losses} many times`);
+        console.log(`You have lost ${noGuess} many times`);
     } 
-    // else {
-    //     nextQuestion();
-    // }
 };
 
 
@@ -100,10 +97,12 @@ $(".startButton").on("click", function(){
 
 });
 
+
 $(".answer").on("click", function(){
-    if($(this) === trivia[i].key){
+    var userGuess = $(this).val();
+    if(userGuess == trivia[i].key){
         console.log('Correct!');
-        wins++;
+        correctAnswer++;
         clearInterval(intID);
         i++;
         start();
@@ -111,7 +110,7 @@ $(".answer").on("click", function(){
         
     } else {
         console.log("Wrong!");
-        losses++;
+        wrongAnswer++;
         clearInterval(intID);
         i++;
         start();
