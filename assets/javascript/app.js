@@ -44,7 +44,6 @@ var trivia = [
     }
 ];
 
-
 //set a timer to count down from 10
 function start() {
     time = 5;
@@ -65,7 +64,6 @@ function countDown(){
     } 
 };
 
-
 //choose a question and display it to the user
 function nextQuestion(){
     // time = 10;
@@ -77,11 +75,8 @@ function nextQuestion(){
 
 };
 
-
-
 // ==============================================================
 // ==============================================================
-
 
 //hide elements
 $(".panel-title").hide();
@@ -97,10 +92,9 @@ $(".startButton").on("click", function(){
 
 });
 
-
 $(".answer").on("click", function(){
-    var userGuess = $(this).val();
-    if(userGuess == trivia[i].key){
+    var userGuess = $(this)
+    if(userGuess.attr("value") == trivia[i].key){
         console.log('Correct!');
         $(".question").html(`Correct!`)
         correctAnswer++;
