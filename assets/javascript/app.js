@@ -102,19 +102,28 @@ $(".answer").on("click", function(){
     var userGuess = $(this).val();
     if(userGuess == trivia[i].key){
         console.log('Correct!');
+        $(".question").html(`Correct!`)
         correctAnswer++;
         clearInterval(intID);
         i++;
-        start();
-        nextQuestion();
+        
+        setTimeout(function() {
+            start();
+            nextQuestion();
+          }, 3000);
         
     } else {
         console.log("Wrong!");
+        $(".question").html(`Oops! Wrong Answer!`)
         wrongAnswer++;
         clearInterval(intID);
         i++;
-        start();
-        nextQuestion();
+
+        setTimeout(function() {
+            start();
+            nextQuestion();
+          }, 3000);
+
     }
 });
 
