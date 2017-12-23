@@ -2,3 +2,11 @@
     background: #212f3f;
     color: #ff9500;
 }
+
+.btn-primary {
+    background: #212f3f;
+}
+
+.btn-primary:hover {
+    background: #ff9500;
+}
