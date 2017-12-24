@@ -1,29 +1,55 @@
+* {
+    font-family: helvetica, neue lt std;
+}
+
 .jumbotron {
-    background: #212f3f;
+    background: url("http://xboxgameinfo.com/wp-content/uploads/2016/05/amazon-banner-880x320.jpg");
+    background-position: center;
+    padding: 10%;
     color: #ff9500;
 }
 
 .btn-primary {
-    background: #212f3f;
+    background: #2c292a;
 }
 
 .btn-primary:hover {
-    background: #ff9500;
+    background: #ff9100;
 }
 
 .answer:hover {
-    border: 1px solid black;
+    border: 1px solid #2c292a;
 }
 
 .answer {
-    margin: 10px;
+    margin: auto;
     padding: 10px;
+    color: #212f3f;
+    width: 50%;
 }
 
 .question {
-    color: #212f3f;
+    color: #ff9100;
 }
 
 .resetButton {
     margin-top: 10px;
+}
+
+.triviaTitle {
+    margin: 0;
+    font-size: 12px;
+    display: inline-block;
+    position: relative;
+    top: 110px;
+    left: 495px;
+}
+
+.jumbotron h1 {
+    font-size: 40px;
+    font-family: 'Satisfy', cursive;
+}
+
+.allAnswers {
+    position: relative;
 }
