@@ -5,7 +5,7 @@ var questionNum = 0;
 var correctAnswer = 0;
 var wrongAnswer = 0;
 var noGuess = 0;
-var time = 5;
+var time = 15;
 var i = 0;
 
 //make an array of objects or objects within objects for Q/A  
@@ -30,45 +30,45 @@ var trivia = [
             d: "Jeff Bezos"
         },
         key: `d`
+    },
+
+    q3 = {
+        question: `What was the first product Amazon sold?`,
+        answer: {
+            a: "Fidget Spinner",
+            b: "Book",
+            c: "Adwords",
+            d: "Sweatshirt"
+        },
+        key: `b`
     }
 
-    // q3 = {
-    //     question: `What was the first product Amazon sold?`,
-    //     answer: {
-    //         a: "Fidget Spinner",
-    //         b: "Book",
-    //         c: "Adwords",
-    //         d: "Sweatshirt"
-    //     },
-    //     key: `b`
-    // }
+    q4 = {
+        question: `For two days, every two years, all employees do what? `,
+        answer: {
+            a: "Move Packages",
+            b: "Company Vacation in the Bahamas",
+            c: "Code!",
+            d: "At The Service Desk Handeling Calls"
+        },
+        key: `d`
+    },
 
-    // q4 = {
-    //     question: `For two days, every two years, all employees do what? `,
-    //     answer: {
-    //         a: "Move Packages",
-    //         b: "Company Vacation in the Bahamas",
-    //         c: "Code!",
-    //         d: "At The Service Desk Handeling Calls"
-    //     },
-    //     key: `d`
-    // },
-
-    // q5 = {
-    //     question: `Which of the following is not owned by Amazon Inc.?`,
-    //     answer: {
-    //         a: "Oculus VR",
-    //         b: "IMDB.com",
-    //         c: "Twitch",
-    //         d: "Whole Foods"
-    //     },
-    //     key: `a`
-    // }
+    q5 = {
+        question: `Which of the following is not owned by Amazon Inc.?`,
+        answer: {
+            a: "Oculus VR",
+            b: "IMDB.com",
+            c: "Twitch",
+            d: "Whole Foods"
+        },
+        key: `a`
+    }
 ];
 
 //set a timer to count down from 10
 function start() {
-    time = 5;
+    time = 15;
     $(".timer").html(`Time: ${time}`);
     intID = setInterval(countDown, 1000);
 };
