@@ -53,3 +53,7 @@
 .allAnswers {
     position: relative;
 }
+
+.results {
+    margin: 25px;
+}

@@ -90,7 +90,7 @@ function countDown(){
         noGuess++;
         i++;
         hideAll();
-        $(".question").html(`You Didn't Answer In Time!`)
+        $(".question").html(`Time's Up!`)
         clearInterval(intID);
         console.log(`You have lost ${noGuess} many times`);
         
@@ -118,15 +118,21 @@ function endGame(){
     $(".triviaContent").prepend(resetButton);
     $(".resetButton").on("click", reset);
 
-    $(".question").html("<h1>Thanks For Playing!</h1>");
-    $(".a").html(`Correct: ${correctAnswer}`);
-    $(".b").html(`Incorrect: ${wrongAnswer}`);
+    var resultsCorrect = $("<h4>").text(`Correct: ${correctAnswer}`).addClass("resultsCorrect results");
+    var resultsIncorrect = $("<h4>").html(`Incorrect: ${wrongAnswer}`).addClass("resultsIncorrect results");
+    $(".triviaContent").append(resultsCorrect, resultsIncorrect);
+    
     if(noGuess === 0) {
-        $(".c").html(`Unanswered: ${noGuess}`);
+        var resultsNone = $("<h4>").html(`Unanswered: ${noGuess}`).addClass("resultsNone results");
+        $(".triviaContent").append(resultsNone);
     } else if (noGuess > 0){
-        $(".c").html(`You left ${noGuess} unanswered ... I'm not mad, just disappointed`);
+        var resultsNone = $("<h4>").html(`You left ${noGuess} unanswered ... I'm not mad, just disappointed.`).addClass("resultsNone results");
+        $(".triviaContent").append(resultsNone);    
     }
-    $(".timer, .d").hide();
+    
+    $(".question").html("<h1>Thanks For Playing!</h1>");
+    $(".timer").hide();
+    hideAll();
 };
 
 //rest the game
@@ -139,6 +145,7 @@ function reset() {
     nextQuestion();
     $(".resetButton").remove();
     $(".timer, .d").show();
+    $(".results").remove();
 };
 
 function hideAll() {
