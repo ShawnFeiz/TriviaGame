@@ -30,40 +30,40 @@ var trivia = [
             d: "Jeff Bezos"
         },
         key: `d`
-    },
-
-    q3 = {
-        question: `What was the first product Amazon sold?`,
-        answer: {
-            a: "Fidget Spinner",
-            b: "Book",
-            c: "Adwords",
-            d: "Sweatshirt"
-        },
-        key: `a`
-    },
-
-    q4 = {
-        question: `For two days, every two years, all employees do what? `,
-        answer: {
-            a: "Move Packages",
-            b: "Company Vacation in the Bahamas",
-            c: "Code!",
-            d: "At The Service Desk Handeling Calls"
-        },
-        key: `d`
-    },
-
-    q5 = {
-        question: `Which of the following is not owned by Amazon Inc.?`,
-        answer: {
-            a: "Oculus VR",
-            b: "IMDB.com",
-            c: "Twitch",
-            d: "Whole Foods"
-        },
-        key: `a`
     }
+
+    // q3 = {
+    //     question: `What was the first product Amazon sold?`,
+    //     answer: {
+    //         a: "Fidget Spinner",
+    //         b: "Book",
+    //         c: "Adwords",
+    //         d: "Sweatshirt"
+    //     },
+    //     key: `b`
+    // }
+
+    // q4 = {
+    //     question: `For two days, every two years, all employees do what? `,
+    //     answer: {
+    //         a: "Move Packages",
+    //         b: "Company Vacation in the Bahamas",
+    //         c: "Code!",
+    //         d: "At The Service Desk Handeling Calls"
+    //     },
+    //     key: `d`
+    // },
+
+    // q5 = {
+    //     question: `Which of the following is not owned by Amazon Inc.?`,
+    //     answer: {
+    //         a: "Oculus VR",
+    //         b: "IMDB.com",
+    //         c: "Twitch",
+    //         d: "Whole Foods"
+    //     },
+    //     key: `a`
+    // }
 ];
 
 //set a timer to count down from 10
@@ -73,6 +73,16 @@ function start() {
     intID = setInterval(countDown, 1000);
 };
 
+//choose a question and display it to the user
+function nextQuestion(){
+    $(".question").html(trivia[i].question)
+    $(".a").html(trivia[i].answer.a)
+    $(".b").html(trivia[i].answer.b)
+    $(".c").html(trivia[i].answer.c)
+    $(".d").html(trivia[i].answer.d)
+};
+
+//function to set up the timer and what happens if it hits 0.
 function countDown(){
     time--;
     $(".timer").html(`Time: ${time}`);
@@ -87,17 +97,30 @@ function countDown(){
             nextQuestion();
           }, 3000);
     } 
+    if(trivia.length === i ){
+        setTimeout(function(){
+        clearInterval(intID);
+        endGame();
+       }, 3000)
+    };
 };
 
-//choose a question and display it to the user
-function nextQuestion(){
-    // time = 10;
-    $(".question").html(trivia[i].question)
-    $(".a").html(trivia[i].answer.a)
-    $(".b").html(trivia[i].answer.b)
-    $(".c").html(trivia[i].answer.c)
-    $(".d").html(trivia[i].answer.d)
+function nextQ() {
+    start();
+    nextQuestion();
+};
 
+function endGame(){
+    console.log("End Game, Show Results");
+    $(".question").html("<h1>Thanks For Playing!</h1>");
+    $(".a").html(`Correct: ${correctAnswer}`);
+    $(".b").html(`Incorrect: ${wrongAnswer}`);
+    if(noGuess === 0) {
+        $(".c").html(`Unanswered: ${noGuess}`);
+    } else if (noGuess > 0){
+        $(".c").html(`Why did you leave ${noGuess} unanswered ... I'm not mad, just disappointed`);
+    }
+    $(".d").hide();
 };
 
 // ==============================================================
@@ -114,7 +137,6 @@ $(".startButton").on("click", function(){
     $(".startButton").hide();
     start();
     nextQuestion();
-
 });
 
 $(".answer").on("click", function(){
@@ -125,11 +147,7 @@ $(".answer").on("click", function(){
         correctAnswer++;
         clearInterval(intID);
         i++;
-        
-        setTimeout(function() {
-            start();
-            nextQuestion();
-          }, 3000);
+            setTimeout(nextQ, 3000);
         
     } else {
         console.log("Wrong!");
@@ -137,33 +155,15 @@ $(".answer").on("click", function(){
         wrongAnswer++;
         clearInterval(intID);
         i++;
-
-        setTimeout(function() {
-            start();
-            nextQuestion();
-          }, 3000);
-
+             setTimeout(nextQ, 3000);
     }
+
+    if(trivia.length === i ){
+        setTimeout(function(){
+        clearInterval(intID);
+        endGame();
+       }, 3000)
+    };
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
     
