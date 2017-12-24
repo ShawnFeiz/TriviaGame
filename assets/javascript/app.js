@@ -5,7 +5,7 @@ var questionNum = 0;
 var correctAnswer = 0;
 var wrongAnswer = 0;
 var noGuess = 0;
-var time = 15;
+var time = 20;
 var i = 0;
 
 //make an array of objects or objects within objects for Q/A  
@@ -41,7 +41,7 @@ var trivia = [
             d: "Sweatshirt"
         },
         key: `b`
-    }
+    },
 
     q4 = {
         question: `For two days, every two years, all employees do what? `,
@@ -68,13 +68,14 @@ var trivia = [
 
 //set a timer to count down from 10
 function start() {
-    time = 15;
+    time = 20;
     $(".timer").html(`Time: ${time}`);
     intID = setInterval(countDown, 1000);
 };
 
 //choose a question and display it to the user
 function nextQuestion(){
+    showAll();
     $(".question").html(trivia[i].question)
     $(".a").html(trivia[i].answer.a)
     $(".b").html(trivia[i].answer.b)
@@ -120,7 +121,15 @@ function endGame(){
     } else if (noGuess > 0){
         $(".c").html(`Why did you leave ${noGuess} unanswered ... I'm not mad, just disappointed`);
     }
-    $(".d").hide();
+    $(".d, .timer").hide();
+};
+
+function hideAll() {
+    $(".allAnswers").hide();
+};
+
+function showAll() {
+    $(".allAnswers").show();
 };
 
 // ==============================================================
@@ -140,8 +149,9 @@ $(".startButton").on("click", function(){
 });
 
 $(".answer").on("click", function(){
-    var userGuess = $(this)
-    if(userGuess.attr("value") == trivia[i].key){
+    if($(this).attr("value") == trivia[i].key){
+        hideAll();
+        // $(".allAnswers").detach();
         console.log('Correct!');
         $(".question").html(`Correct!`)
         correctAnswer++;
@@ -150,6 +160,8 @@ $(".answer").on("click", function(){
             setTimeout(nextQ, 3000);
         
     } else {
+        hideAll();
+        // $(".allAnswers").detach();
         console.log("Wrong!");
         $(".question").html(`Oops! Wrong Answer!`)
         wrongAnswer++;
