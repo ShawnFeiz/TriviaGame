@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
 //set initial variables
-var questionNum = 0;
 var correctAnswer = 0;
 var wrongAnswer = 0;
 var noGuess = 0;
@@ -30,40 +29,40 @@ var trivia = [
             d: "Jeff Bezos"
         },
         key: `d`
-    },
-
-    q3 = {
-        question: `What was the first product Amazon sold?`,
-        answer: {
-            a: "Fidget Spinner",
-            b: "Book",
-            c: "Adwords",
-            d: "Sweatshirt"
-        },
-        key: `b`
-    },
-
-    q4 = {
-        question: `For two days, every two years, all employees do what? `,
-        answer: {
-            a: "Move Packages",
-            b: "Company Vacation in the Bahamas",
-            c: "Code!",
-            d: "At The Service Desk Handeling Calls"
-        },
-        key: `d`
-    },
-
-    q5 = {
-        question: `Which of the following is not owned by Amazon Inc.?`,
-        answer: {
-            a: "Oculus VR",
-            b: "IMDB.com",
-            c: "Twitch",
-            d: "Whole Foods"
-        },
-        key: `a`
     }
+
+    // q3 = {
+    //     question: `What was the first product Amazon sold?`,
+    //     answer: {
+    //         a: "Fidget Spinner",
+    //         b: "Book",
+    //         c: "Adwords",
+    //         d: "Sweatshirt"
+    //     },
+    //     key: `b`
+    // },
+
+    // q4 = {
+    //     question: `For two days, every two years, all employees do what? `,
+    //     answer: {
+    //         a: "Move Packages",
+    //         b: "Company Vacation in the Bahamas",
+    //         c: "Code!",
+    //         d: "At The Service Desk Handeling Calls"
+    //     },
+    //     key: `d`
+    // },
+
+    // q5 = {
+    //     question: `Which of the following is not owned by Amazon Inc.?`,
+    //     answer: {
+    //         a: "Oculus VR",
+    //         b: "IMDB.com",
+    //         c: "Twitch",
+    //         d: "Whole Foods"
+    //     },
+    //     key: `a`
+    // }
 ];
 
 //set a timer to count down from 10
@@ -113,6 +112,10 @@ function nextQ() {
 
 function endGame(){
     console.log("End Game, Show Results");
+    $(".startButton").empty();
+    $(".startButton").html(`Play Again`);
+    $(".startButton").show();
+    // $(".startButton").on("click", reset());
     $(".question").html("<h1>Thanks For Playing!</h1>");
     $(".a").html(`Correct: ${correctAnswer}`);
     $(".b").html(`Incorrect: ${wrongAnswer}`);
@@ -121,7 +124,22 @@ function endGame(){
     } else if (noGuess > 0){
         $(".c").html(`Why did you leave ${noGuess} unanswered ... I'm not mad, just disappointed`);
     }
-    $(".d, .timer").hide();
+    $(".d").html("Great Job!");
+    // $(".startButton").on("click", reset);
+    //must create a new button to reset because the .startButton click interferes 
+    //with the on click for it at the bottom of the page. 
+    //must create and append to another div
+
+};
+
+//rest the game
+function reset() {
+    correctAnswer = 0;
+    wrongAnswer = 0;
+    noGuess = 0;
+    i = 0;
+    start();
+    nextQuestion();
 };
 
 function hideAll() {
