@@ -18,51 +18,51 @@ var trivia = [
             d: 1981
         },
         key: `c`
-    },
-
-    q2 = {
-        question: `Who's the CEO & founder of Amazon?`,
-        answer: {
-            a: "Mark Zuckerburg",
-            b: "Elon Musk",
-            c: "Winklevoss Twins",
-            d: "Jeff Bezos"
-        },
-        key: `d`
-    },
-
-    q3 = {
-        question: `What was the first product Amazon sold?`,
-        answer: {
-            a: "Fidget Spinner",
-            b: "Book",
-            c: "Adwords",
-            d: "Sweatshirt"
-        },
-        key: `b`
-    },
-
-    q4 = {
-        question: `For two days, every two years, all employees do what? `,
-        answer: {
-            a: "Move Packages",
-            b: "Company Vacation in the Bahamas",
-            c: "Code!",
-            d: "At The Service Desk Handeling Calls"
-        },
-        key: `d`
-    },
-
-    q5 = {
-        question: `Which of the following is not owned by Amazon Inc.?`,
-        answer: {
-            a: "Oculus VR",
-            b: "IMDB.com",
-            c: "Twitch",
-            d: "Whole Foods"
-        },
-        key: `a`
     }
+
+    // q2 = {
+    //     question: `Who's the CEO & founder of Amazon?`,
+    //     answer: {
+    //         a: "Mark Zuckerburg",
+    //         b: "Elon Musk",
+    //         c: "Winklevoss Twins",
+    //         d: "Jeff Bezos"
+    //     },
+    //     key: `d`
+    // },
+
+    // q3 = {
+    //     question: `What was the first product Amazon sold?`,
+    //     answer: {
+    //         a: "Fidget Spinner",
+    //         b: "Book",
+    //         c: "Adwords",
+    //         d: "Sweatshirt"
+    //     },
+    //     key: `b`
+    // },
+
+    // q4 = {
+    //     question: `For two days, every two years, all employees do what? `,
+    //     answer: {
+    //         a: "Move Packages",
+    //         b: "Company Vacation in the Bahamas",
+    //         c: "Code!",
+    //         d: "At The Service Desk Handeling Calls"
+    //     },
+    //     key: `d`
+    // },
+
+    // q5 = {
+    //     question: `Which of the following is not owned by Amazon Inc.?`,
+    //     answer: {
+    //         a: "Oculus VR",
+    //         b: "IMDB.com",
+    //         c: "Twitch",
+    //         d: "Whole Foods"
+    //     },
+    //     key: `a`
+    // }
 ];
 
 //set a timer to count down from 10
@@ -126,8 +126,6 @@ function endGame(){
     }
     $(".d").html("Great Job!");
     $(".timer").hide();
-    // $(".startButton").on("click", reset);
-
 };
 
 //rest the game
@@ -140,8 +138,6 @@ function reset() {
     nextQuestion();
     $(".resetButton").remove();
     $(".timer").show();
-
-
 };
 
 function hideAll() {
