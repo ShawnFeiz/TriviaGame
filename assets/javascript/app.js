@@ -18,18 +18,18 @@ var trivia = [
             d: 1981
         },
         key: `c`
-    },
-
-    q2 = {
-        question: `Who's the CEO & founder of Amazon?`,
-        answer: {
-            a: "Mark Zuckerburg",
-            b: "Elon Musk",
-            c: "Winklevoss Twins",
-            d: "Jeff Bezos"
-        },
-        key: `d`
     }
+
+    // q2 = {
+    //     question: `Who's the CEO & founder of Amazon?`,
+    //     answer: {
+    //         a: "Mark Zuckerburg",
+    //         b: "Elon Musk",
+    //         c: "Winklevoss Twins",
+    //         d: "Jeff Bezos"
+    //     },
+    //     key: `d`
+    // }
 
     // q3 = {
     //     question: `What was the first product Amazon sold?`,
@@ -112,10 +112,13 @@ function nextQ() {
 
 function endGame(){
     console.log("End Game, Show Results");
-    $(".startButton").empty();
-    $(".startButton").html(`Play Again`);
-    $(".startButton").show();
-    // $(".startButton").on("click", reset());
+    // $(".startButton").empty();
+    // $(".startButton").html(`Play Again`);
+    // $(".startButton").show();
+    var resetButton = $("<button>").text("Play Again").addClass("btn-lg btn-primary resetButton");
+    $(".triviaContent").prepend(resetButton);
+    $(".resetButton").on("click", reset);
+
     $(".question").html("<h1>Thanks For Playing!</h1>");
     $(".a").html(`Correct: ${correctAnswer}`);
     $(".b").html(`Incorrect: ${wrongAnswer}`);
@@ -125,10 +128,8 @@ function endGame(){
         $(".c").html(`Why did you leave ${noGuess} unanswered ... I'm not mad, just disappointed`);
     }
     $(".d").html("Great Job!");
+    $(".timer").hide();
     // $(".startButton").on("click", reset);
-    //must create a new button to reset because the .startButton click interferes 
-    //with the on click for it at the bottom of the page. 
-    //must create and append to another div
 
 };
 
@@ -140,6 +141,10 @@ function reset() {
     i = 0;
     start();
     nextQuestion();
+    $(".resetButton").remove();
+    $(".timer").show();
+
+
 };
 
 function hideAll() {
