@@ -43,7 +43,7 @@ var trivia = [
     },
 
     q4 = {
-        question: `For two days, every two years, all employees do what? `,
+        question: `Every two years, all employees do what for two days? `,
         answer: {
             a: "Move Packages",
             b: "Company Vacation in the Bahamas",
@@ -89,6 +89,8 @@ function countDown(){
     if(time === 0){
         noGuess++;
         i++;
+        hideAll();
+        $(".question").html(`You Didn't Answer In Time!`)
         clearInterval(intID);
         console.log(`You have lost ${noGuess} many times`);
         

@@ -5,7 +5,7 @@
 .jumbotron {
     background: url("http://xboxgameinfo.com/wp-content/uploads/2016/05/amazon-banner-880x320.jpg");
     background-position: center;
-    padding: 10%;
+    padding: 8%;
     color: #ff9500;
 }
 
@@ -41,7 +41,7 @@
     font-size: 12px;
     display: inline-block;
     position: relative;
-    top: 110px;
+    top: 90px;
     left: 495px;
 }
 
